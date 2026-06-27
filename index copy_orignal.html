@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sijan Pandey — Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #f7f5f0;
@@ -34,21 +25,7 @@
       --green-bg: #eaf4ee;
     }
 
-    /* Three.js Canvas */
-    #three-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.55;
-      mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 70%);
-      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 70%);
-    }
-
-    html {
+    html { 
       scroll-behavior: smooth;
       scroll-padding-top: 60px;
     }
@@ -70,58 +47,41 @@
 
     /* Custom cursor */
     .cursor {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       background: var(--text);
       border-radius: 50%;
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
       transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
     }
-
     .cursor-ring {
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(15, 15, 15, 0.35);
+      width: 32px; height: 32px;
+      border: 1px solid rgba(15,15,15,0.35);
       border-radius: 50%;
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       pointer-events: none;
       z-index: 9998;
       transform: translate(-50%, -50%);
       transition: transform 0.18s ease, width 0.2s ease, height 0.2s ease;
     }
-
-    body:hover .cursor {
-      opacity: 1;
-    }
+    body:hover .cursor { opacity: 1; }
 
     /* Nav */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 1.25rem 3rem;
-      background: rgba(247, 245, 240, 0.88);
+      background: rgba(247,245,240,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid transparent;
       transition: all 0.5s cubic-bezier(0.32, 0.72, 0.3, 1);
     }
-
-    nav.scrolled {
-      border-bottom-color: var(--border);
-    }
-
+    nav.scrolled { border-bottom-color: var(--border); }
     .nav-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 1.15rem;
@@ -129,13 +89,7 @@
       color: var(--text);
       text-decoration: none;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 2.2rem;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
     .nav-links a {
       font-size: 0.82rem;
       font-weight: 400;
@@ -145,10 +99,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
+    .nav-links a:hover { color: var(--text); }
 
     /* Layout */
     .container {
@@ -157,21 +108,17 @@
       padding: 0 4rem;
     }
 
-    section {
-      padding: 8rem 2rem;
-    }
+    section { padding: 8rem 2rem; }
 
     /* Hero */
     #hero {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       padding-top: 6rem;
       padding-bottom: 3rem;
       position: relative;
       overflow: hidden;
     }
-
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -179,7 +126,6 @@
       align-items: center;
       width: 100%;
     }
-
     .hero-eyebrow {
       font-family: 'DM Mono', monospace;
       font-size: 0.75rem;
@@ -188,19 +134,14 @@
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
+      display: flex; align-items: center; gap: 0.7rem;
     }
-
     .hero-eyebrow::before {
       content: '';
       display: block;
-      width: 28px;
-      height: 1px;
+      width: 28px; height: 1px;
       background: var(--text-muted);
     }
-
     .hero-name {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(3.5rem, 7vw, 5.8rem);
@@ -208,12 +149,7 @@
       letter-spacing: -0.02em;
       margin-bottom: 2rem;
     }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
+    .hero-name em { font-style: italic; color: var(--text-muted); }
     .hero-bio {
       font-size: 1.15rem;
       font-weight: 300;
@@ -222,17 +158,11 @@
       max-width: 480px;
       margin-bottom: 3rem;
     }
-
     .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      display: flex; gap: 1rem; flex-wrap: wrap;
     }
-
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.95rem 2rem;
       font-size: 0.9rem;
       font-weight: 500;
@@ -243,45 +173,30 @@
       cursor: none;
       will-change: transform, box-shadow;
     }
-
     .btn-primary {
       background: var(--text);
       color: var(--bg);
       border: 1px solid var(--text);
     }
-
-    .btn-primary:hover {
-      background: #2a2a2a;
-    }
-
+    .btn-primary:hover { background: #2a2a2a; }
     .btn-outline {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
     }
-
-    .btn-outline:hover {
-      border-color: var(--text);
-      background: var(--accent-soft);
-    }
+    .btn-outline:hover { border-color: var(--text); background: var(--accent-soft); }
 
     .hero-image-wrap {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
       gap: 1.5rem;
     }
-
     .hero-img-frame {
-      width: 380px;
-      height: 450px;
+      width: 380px; height: 450px;
       border-radius: 20px;
       overflow: hidden;
       position: relative;
       border: 1px solid var(--border);
     }
-
     .hero-img-frame::before {
       content: '';
       position: absolute;
@@ -291,72 +206,52 @@
       pointer-events: none;
       opacity: 0;
     }
-
     .hero-img-frame:hover::before {
       animation: borderStroke 1.2s ease-in-out forwards;
     }
-
     @keyframes borderStroke {
-      0% {
+      0% { 
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         opacity: 1;
       }
-
-      25% {
+      25% { 
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         opacity: 1;
       }
-
-      50% {
+      50% { 
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         opacity: 1;
       }
-
-      75% {
+      75% { 
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         opacity: 1;
       }
-
-      100% {
+      100% { 
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         opacity: 1;
       }
     }
-
     .hero-img-frame img {
-      width: 100%;
-      height: 100%;
+      width:100%; height: 100%;
       object-fit: cover;
       object-position: top;
       filter: grayscale(18%);
       transition: filter 0.4s, transform 0.4s ease;
       transform: scale(1);
     }
-
-    .hero-img-frame:hover img {
-      filter: grayscale(0%);
-      transform: scale(1.05);
-    }
-
+    .hero-img-frame:hover img { filter: grayscale(0%); transform: scale(1.05); }
     .hero-img-placeholder {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       background: var(--accent-soft);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
       gap: 0.6rem;
       color: var(--text-faint);
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem;
       letter-spacing: 0.06em;
     }
-
-    .hero-img-placeholder svg {
-      opacity: 0.3;
-    }
-
+    .hero-img-placeholder svg { opacity: 0.3; }
     .hero-badge {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -367,33 +262,20 @@
       color: var(--text-muted);
       line-height: 1.5;
     }
-
     .status-dot {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      background: var(--green);
-      border-radius: 50%;
+      display: inline-block; width: 6px; height: 6px;
+      background: var(--green); border-radius: 50%;
       margin-right: 5px;
       animation: pulse 2s infinite;
     }
-
     @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     /* Floating bg elements */
     .bg-grid {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -411,11 +293,8 @@
       text-transform: uppercase;
       color: var(--text-faint);
       margin-bottom: 0.7rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
     }
-
     .section-label::after {
       content: '';
       flex: 1;
@@ -423,7 +302,6 @@
       background: var(--border);
       max-width: 60px;
     }
-
     .section-title {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.9rem, 3.5vw, 2.8rem);
@@ -431,7 +309,6 @@
       line-height: 1.12;
       margin-bottom: 1rem;
     }
-
     .section-sub {
       color: var(--text-muted);
       font-size: 1rem;
@@ -447,7 +324,6 @@
       gap: 6rem;
       align-items: start;
     }
-
     .about-text p {
       color: var(--text-muted);
       font-size: 1.05rem;
@@ -455,12 +331,7 @@
       line-height: 1.85;
       margin-bottom: 1.5rem;
     }
-
-    .about-text p strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
+    .about-text p strong { color: var(--text); font-weight: 500; }
     .skills-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -470,14 +341,12 @@
       border-radius: 6px;
       overflow: hidden;
     }
-
     .skill-cell {
       background: var(--bg-card);
       padding: 1.6rem 1.8rem;
       position: relative;
       transition: background 0.3s ease;
     }
-
     .skill-cell::before {
       content: '';
       position: absolute;
@@ -488,15 +357,8 @@
       background: var(--text);
       transition: width 0.4s ease;
     }
-
-    .skill-cell:hover::before {
-      width: 100%;
-    }
-
-    .skill-cell:hover {
-      background: var(--accent-soft);
-    }
-
+    .skill-cell:hover::before { width: 100%; }
+    .skill-cell:hover { background: var(--accent-soft); }
     .skill-cell-label {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
@@ -505,13 +367,7 @@
       color: var(--text-faint);
       margin-bottom: 0.6rem;
     }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .tag {
       font-size: 0.76rem;
       font-family: 'DM Mono', monospace;
@@ -527,7 +383,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
-
     .project-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -538,37 +393,27 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
       cursor: none;
     }
-
     .project-card::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      position: absolute; top: 0; left: 0; right: 0;
       height: 2px;
       background: var(--text);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.3s ease;
     }
-
-    .project-card:hover::before {
-      transform: scaleX(1);
-    }
-
+    .project-card:hover::before { transform: scaleX(1); }
     .project-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
       border-color: #d4d0c8;
     }
-
     .project-num {
       font-family: 'DM Mono', monospace;
       font-size: 0.68rem;
       color: var(--text-faint);
       margin-bottom: 1rem;
     }
-
     .project-title {
       font-family: 'DM Serif Display', serif;
       font-size: 1.35rem;
@@ -576,7 +421,6 @@
       margin-bottom: 0.8rem;
       line-height: 1.3;
     }
-
     .project-desc {
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -584,57 +428,29 @@
       line-height: 1.7;
       margin-bottom: 1.6rem;
     }
-
-    .project-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 1.4rem;
-    }
-
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.4rem; }
     .project-links {
-      display: flex;
-      gap: 1rem;
+      display: flex; gap: 1rem;
       border-top: 1px solid var(--border);
       padding-top: 1rem;
     }
-
     .project-link {
       font-size: 0.78rem;
       font-family: 'DM Mono', monospace;
       color: var(--text-muted);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
+      display: flex; align-items: center; gap: 0.35rem;
       transition: color 0.2s;
     }
-
-    .project-link:hover {
-      color: var(--text);
-    }
-
-    .project-link svg {
-      width: 12px;
-      height: 12px;
-      flex-shrink: 0;
-    }
-
+    .project-link:hover { color: var(--text); }
+    .project-link svg { width: 12px; height: 12px; flex-shrink: 0; }
     .project-card.featured {
       grid-column: span 2;
     }
-
-    .project-card.featured .project-title {
-      font-size: 1.6rem;
-    }
+    .project-card.featured .project-title { font-size: 1.6rem; }
 
     /* Experience */
-    #experience .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
+    #experience .exp-list { display: flex; flex-direction: column; gap: 0; }
     .exp-item {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -643,58 +459,31 @@
       border-bottom: 1px solid var(--border);
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.32, 0.72, 0.3, 1),
-        transform 0.7s cubic-bezier(0.32, 0.72, 0.3, 1);
+      transition: opacity 0.7s cubic-bezier(0.32, 0.72, 0.3, 1), 
+                  transform 0.7s cubic-bezier(0.32, 0.72, 0.3, 1);
       will-change: opacity, transform;
     }
-
-    .exp-item.visible {
-      opacity: 1;
+    .exp-item.visible { 
+      opacity: 1; 
       transform: translateY(0);
     }
-
     .exp-period {
       font-family: 'DM Mono', monospace;
       font-size: 0.75rem;
       color: var(--text-faint);
       padding-top: 0.2rem;
     }
-
-    .exp-role {
-      font-size: 1.08rem;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-
-    .exp-company {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
-    }
-
-    .exp-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      line-height: 1.75;
-    }
+    .exp-role { font-size: 1.08rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .exp-company { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+    .exp-desc { font-size: 0.95rem; color: var(--text-muted); font-weight: 300; line-height: 1.75; }
 
     /* Contact */
-    #contact {
-      border-top: 1px solid var(--border);
-    }
-
+    #contact { border-top: 1px solid var(--border); }
     .contact-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      display: flex; justify-content: space-between; align-items: flex-end;
       gap: 4rem;
     }
-
-    .contact-left {
-      max-width: 580px;
-    }
-
+    .contact-left { max-width: 580px; }
     .contact-title {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(2.4rem, 5.5vw, 4.4rem);
@@ -702,12 +491,7 @@
       line-height: 1.1;
       margin-bottom: 1.5rem;
     }
-
-    .contact-title em {
-      font-style: italic;
-      color: var(--text-muted);
-    }
-
+    .contact-title em { font-style: italic; color: var(--text-muted); }
     .contact-sub {
       color: var(--text-muted);
       font-weight: 300;
@@ -715,28 +499,16 @@
       margin-bottom: 2.5rem;
       line-height: 1.8;
     }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
+    .contact-links { display: flex; flex-direction: column; gap: 0.7rem; }
     .contact-link {
       font-family: 'DM Mono', monospace;
       font-size: 0.82rem;
       color: var(--text-muted);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
       transition: color 0.2s;
     }
-
-    .contact-link:hover {
-      color: var(--text);
-    }
-
+    .contact-link:hover { color: var(--text); }
     .contact-link::before {
       content: '→';
       font-size: 0.75rem;
@@ -747,11 +519,8 @@
       padding: 2rem 0;
       border-top: 1px solid var(--border);
     }
-
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem;
       color: var(--text-faint);
@@ -761,26 +530,24 @@
     .fade-in {
       opacity: 0;
       transform: translateY(32px);
-      transition: opacity 0.75s cubic-bezier(0.32, 0.72, 0.3, 1),
-        transform 0.75s cubic-bezier(0.32, 0.72, 0.3, 1);
+      transition: opacity 0.75s cubic-bezier(0.32, 0.72, 0.3, 1), 
+                  transform 0.75s cubic-bezier(0.32, 0.72, 0.3, 1);
       will-change: opacity, transform;
     }
-
-    .fade-in.visible {
-      opacity: 1;
+    .fade-in.visible { 
+      opacity: 1; 
       transform: translateY(0);
     }
 
     .slide-in-left {
       opacity: 0;
       transform: translateX(-50px);
-      transition: opacity 0.8s cubic-bezier(0.32, 0.72, 0.3, 1),
-        transform 0.8s cubic-bezier(0.32, 0.72, 0.3, 1);
+      transition: opacity 0.8s cubic-bezier(0.32, 0.72, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.32, 0.72, 0.3, 1);
       will-change: opacity, transform;
     }
-
-    .slide-in-left.visible {
-      opacity: 1;
+    .slide-in-left.visible { 
+      opacity: 1; 
       transform: translateX(0);
     }
 
@@ -790,7 +557,6 @@
         opacity: 0;
         transform: translateY(40px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -801,131 +567,54 @@
       animation: smoothReveal 0.8s cubic-bezier(0.32, 0.72, 0.3, 1) both;
     }
 
-    .stagger-1 {
-      transition-delay: 0.08s;
-    }
-
-    .stagger-2 {
-      transition-delay: 0.16s;
-    }
-
-    .stagger-3 {
-      transition-delay: 0.24s;
-    }
-
-    .stagger-4 {
-      transition-delay: 0.32s;
-    }
-
-    .stagger-5 {
-      transition-delay: 0.4s;
-    }
-
-    .stagger-6 {
-      transition-delay: 0.48s;
-    }
+    .stagger-1 { transition-delay: 0.08s; }
+    .stagger-2 { transition-delay: 0.16s; }
+    .stagger-3 { transition-delay: 0.24s; }
+    .stagger-4 { transition-delay: 0.32s; }
+    .stagger-5 { transition-delay: 0.4s; }
+    .stagger-6 { transition-delay: 0.48s; }
 
     /* Hero entrance - Premium smooth animation */
     @keyframes heroIn {
-      from {
-        opacity: 0;
+      from { 
+        opacity: 0; 
         transform: translateY(40px);
       }
-
-      to {
-        opacity: 1;
+      to   { 
+        opacity: 1; 
         transform: translateY(0);
       }
     }
-
-    .hero-enter {
+    
+    .hero-enter { 
       animation: heroIn 1s cubic-bezier(0.32, 0.72, 0.3, 1) forwards;
       will-change: opacity, transform;
     }
-
-    .hero-enter-1 {
-      animation-delay: 0.12s;
-      opacity: 0;
-    }
-
-    .hero-enter-2 {
-      animation-delay: 0.28s;
-      opacity: 0;
-    }
-
-    .hero-enter-3 {
-      animation-delay: 0.44s;
-      opacity: 0;
-    }
-
-    .hero-enter-4 {
-      animation-delay: 0.6s;
-      opacity: 0;
-    }
-
-    .hero-enter-img {
-      animation-delay: 0.32s;
-      opacity: 0;
-    }
+    
+    .hero-enter-1 { animation-delay: 0.12s; opacity: 0; }
+    .hero-enter-2 { animation-delay: 0.28s; opacity: 0; }
+    .hero-enter-3 { animation-delay: 0.44s; opacity: 0; }
+    .hero-enter-4 { animation-delay: 0.6s; opacity: 0; }
+    .hero-enter-img { animation-delay: 0.32s; opacity: 0; }
 
     /* Responsive */
     @media (max-width: 900px) {
-      nav {
-        padding: 1rem 1.5rem;
-      }
-
-      .container {
-        padding: 0 2rem;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-      }
-
-      .hero-image-wrap {
-        order: -1;
-      }
-
-      .hero-img-frame {
-        width: 100%;
-        height: 320px;
-      }
-
-      #about .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      #projects .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-card.featured {
-        grid-column: span 1;
-      }
-
-      .contact-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .exp-item {
-        grid-template-columns: 1fr;
-        gap: 0.4rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
+      nav { padding: 1rem 1.5rem; }
+      .container { padding: 0 2rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .hero-image-wrap { order: -1; }
+      .hero-img-frame { width: 100%; height: 320px; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      #projects .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+      .contact-inner { flex-direction: column; align-items: flex-start; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .nav-links { display: none; }
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-
 <body>
 
-  <canvas id="three-canvas"></canvas>
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
@@ -953,9 +642,7 @@
             Sijan<br><em>Pandey.</em>
           </h1>
           <p class="hero-bio hero-enter hero-enter-3">
-            I am Sijan Pandey, 4th-year B.Tech student in Artificial Intelligence, driven by a passion for Machine
-            Learning and Deep Learning. Actively exploring new technologies and eager to contribute to innovative
-            projects.
+            I am Sijan Pandey, 4th-year B.Tech student in Artificial Intelligence, driven by a passion for Machine Learning and Deep Learning. Actively exploring new technologies and eager to contribute to innovative projects.
           </p>
           <div class="hero-cta hero-enter hero-enter-4">
             <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -964,7 +651,7 @@
         </div>
         <div class="hero-image-wrap hero-enter hero-enter-img">
           <div class="hero-img-frame">
-            <img src="./s.jpg"" alt=" Sijan Pandey" />
+            <img src="./s.jpg"" alt="Sijan Pandey" />
           </div>
           <div class="hero-badge">
             <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
@@ -984,27 +671,19 @@
       <p class="section-label fade-in slide-in-left">About</p>
       <div class="about-grid">
         <div class="about-text fade-in stagger-1">
-          <h2 class="section-title slide-in-left" style="margin-bottom:1.6rem;">Building with<br><em
-              style="font-style:italic;color:var(--text-muted);">precision.</em></h2>
+          <h2 class="section-title slide-in-left" style="margin-bottom:1.6rem;">Building with<br><em style="font-style:italic;color:var(--text-muted);">precision.</em></h2>
           <p>
-            I'm a developer who cares deeply about <strong>clean code, system design, and developer experience</strong>.
-            I enjoy turning complex problems into simple, elegant solutions.
+            I'm a developer who cares deeply about <strong>clean code, system design, and developer experience</strong>. I enjoy turning complex problems into simple, elegant solutions.
           </p>
           <p>
-            Whether it's building full-stack web applications, designing APIs, or diving into open-source — I bring both
-            technical rigour and an eye for quality to every project.
+            Whether it's building full-stack web applications, designing APIs, or diving into open-source — I bring both technical rigour and an eye for quality to every project.
           </p>
           <p>
-            When I'm not coding, you'll find me exploring new technologies, contributing to the community, or tinkering
-            with side projects that push my limits.
+            When I'm not coding, you'll find me exploring new technologies, contributing to the community, or tinkering with side projects that push my limits.
           </p>
           <div style="margin-top:2rem;">
-            <a href="https://github.com/devsijanpandey12" target="_blank" class="btn btn-outline"
-              style="font-size:0.82rem;">
-              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+            <a href="https://github.com/devsijanpandey12" target="_blank" class="btn btn-outline" style="font-size:0.82rem;">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               github.com/devsijanpandey12
             </a>
           </div>
@@ -1068,9 +747,7 @@
           <div class="project-num">01 — Featured</div>
           <h3 class="project-title">Automated Hydroponics AI</h3>
           <p class="project-desc">
-            An intelligent, self-regulating soil-less farming system funded by the STEAM Design Grant. Fuses
-            reinforcement learning for automated pH and nutrient dosing, computer vision for real-time crop disease
-            detection, and custom IoT edge microcontrollers for climate control.
+            An intelligent, self-regulating soil-less farming system funded by the STEAM Design Grant. Fuses reinforcement learning for automated pH and nutrient dosing, computer vision for real-time crop disease detection, and custom IoT edge microcontrollers for climate control.
           </p>
           <div class="project-stack">
             <span class="tag">Reinforcement Learning</span>
@@ -1081,10 +758,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/devsijanpandey12" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
           </div>
@@ -1095,8 +769,7 @@
           <div class="project-num">02 — Featured</div>
           <h3 class="project-title">Nepali Food Classifier</h3>
           <p class="project-desc">
-            CNN-based image classification model for Nepali food recognition. Deep learning project focused on accurate
-            food detection and classification using neural networks.
+            CNN-based image classification model for Nepali food recognition. Deep learning project focused on accurate food detection and classification using neural networks.
           </p>
           <div class="project-stack">
             <span class="tag">Python</span>
@@ -1106,10 +779,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/devsijanpandey12" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
           </div>
@@ -1119,8 +789,7 @@
           <div class="project-num">03</div>
           <h3 class="project-title">TrekSathi</h3>
           <p class="project-desc">
-            AI Travel Companion App. An intelligent travel application providing personalized recommendations and
-            itinerary planning.
+            AI Travel Companion App. An intelligent travel application providing personalized recommendations and itinerary planning.
           </p>
           <div class="project-stack">
             <span class="tag">Flutter</span>
@@ -1130,10 +799,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/devsijanpandey12" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
           </div>
@@ -1143,8 +809,7 @@
           <div class="project-num">04</div>
           <h3 class="project-title">Nepali Food Description &amp; Sorting</h3>
           <p class="project-desc">
-            Tool for Nepali food description and categorization. NLP-based system for organizing and classifying
-            traditional Nepali cuisine data.
+            Tool for Nepali food description and categorization. NLP-based system for organizing and classifying traditional Nepali cuisine data.
           </p>
           <div class="project-stack">
             <span class="tag">Python</span>
@@ -1153,10 +818,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/devsijanpandey12" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
           </div>
@@ -1166,8 +828,7 @@
           <div class="project-num">05</div>
           <h3 class="project-title">Facial Recognition &amp; Surveillance</h3>
           <p class="project-desc">
-            Open Set Facial Recognition system for surveillance applications. Advanced computer vision project using
-            deep learning for real-time face detection and recognition.
+            Open Set Facial Recognition system for surveillance applications. Advanced computer vision project using deep learning for real-time face detection and recognition.
           </p>
           <div class="project-stack">
             <span class="tag">Python</span>
@@ -1177,10 +838,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/devsijanpandey12" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
           </div>
@@ -1190,8 +848,7 @@
           <div class="project-num">06</div>
           <h3 class="project-title">Landslide Susceptibility Mapping</h3>
           <p class="project-desc">
-            Produced ML-based susceptibility maps of Nepal landslide risk zones by fusing multi-band Landsat composites
-            and DEM derivatives into a supervised classification pipeline.
+            Produced ML-based susceptibility maps of Nepal landslide risk zones by fusing multi-band Landsat composites and DEM derivatives into a supervised classification pipeline.
           </p>
           <div class="project-stack">
             <span class="tag">QGIS</span>
@@ -1201,10 +858,7 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/devsijanpandey12" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
           </div>
@@ -1233,9 +887,7 @@
             <div class="exp-role">STEAM Design Grant Recipient</div>
             <div class="exp-company">Kathmandu University</div>
             <div class="exp-desc">
-              Awarded the competitive STEAM Design Grant to lead the research and development of an Automated
-              Hydroponics AI system. Fusing deep reinforcement learning for optimal pH/nutrient dosing, computer vision
-              models for non-invasive crop health monitoring, and edge IoT devices for real-time climate regulation.
+              Awarded the competitive STEAM Design Grant to lead the research and development of an Automated Hydroponics AI system. Fusing deep reinforcement learning for optimal pH/nutrient dosing, computer vision models for non-invasive crop health monitoring, and edge IoT devices for real-time climate regulation.
             </div>
           </div>
         </div>
@@ -1245,18 +897,11 @@
             <div class="exp-role">AI Conclave Coordinator</div>
             <div class="exp-company">Kathmandu University Artificial Intelligence Club (KUAIC)</div>
             <div class="exp-desc">
-              <ul
-                style="list-style-type: disc; margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
-                <li>Led AI Conclave 2026, Kathmandu University’s flagship national AI event, overseeing end-to-end
-                  planning and execution of a three-day program connecting students, researchers, industry experts, and
-                  policymakers.</li>
-                <li>Managed multidisciplinary teams across sponsorship, operations, marketing, technical competitions,
-                  project exhibitions, speaker engagement, and event logistics.</li>
-                <li>Secured and coordinated partnerships with stakeholders including the Ministry of Education, Science
-                  and Technology (MOEST), National AI Center, Nabil Bank, Fusemachines, and WorldLink Communications.
-                </li>
-                <li>Organized expert talks, panel discussions, AI summits, robotics competitions, and networking
-                  activities to strengthen Nepal’s AI ecosystem and industry-academia collaboration.</li>
+              <ul style="list-style-type: disc; margin-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                <li>Led AI Conclave 2026, Kathmandu University’s flagship national AI event, overseeing end-to-end planning and execution of a three-day program connecting students, researchers, industry experts, and policymakers.</li>
+                <li>Managed multidisciplinary teams across sponsorship, operations, marketing, technical competitions, project exhibitions, speaker engagement, and event logistics.</li>
+                <li>Secured and coordinated partnerships with stakeholders including the Ministry of Education, Science and Technology (MOEST), National AI Center, Nabil Bank, Fusemachines, and WorldLink Communications.</li>
+                <li>Organized expert talks, panel discussions, AI summits, robotics competitions, and networking activities to strengthen Nepal’s AI ecosystem and industry-academia collaboration.</li>
               </ul>
             </div>
           </div>
@@ -1267,8 +912,7 @@
             <div class="exp-role">PCB Design &amp; Embedded Systems Workshop</div>
             <div class="exp-company">IoT Research and Development Lab, Kathmandu University</div>
             <div class="exp-desc">
-              Successfully completed an intensive, 4-hour hands-on workshop focused on circuit schematic design, PCB
-              routing layouts, and microcontroller programming for custom IoT embedded systems.
+              Successfully completed an intensive, 4-hour hands-on workshop focused on circuit schematic design, PCB routing layouts, and microcontroller programming for custom IoT embedded systems.
             </div>
           </div>
         </div>
@@ -1289,8 +933,7 @@
             <div class="exp-role">Bachelor of Technology in Artificial Intelligence (7th Sem)</div>
             <div class="exp-company">Kathmandu University &bull; Kavre, Dhulikhel, Nepal</div>
             <div class="exp-desc">
-              <strong>Coursework:</strong> Deep Learning &middot; Machine Learning &middot; Computer Vision &middot; NLP
-              &middot; LLMs &middot; Graph Neural Networks &middot; GIS &amp; Remote Sensing &middot; Agentic AI Systems
+              <strong>Coursework:</strong> Deep Learning &middot; Machine Learning &middot; Computer Vision &middot; NLP &middot; LLMs &middot; Graph Neural Networks &middot; GIS &amp; Remote Sensing &middot; Agentic AI Systems
             </div>
           </div>
         </div>
@@ -1317,21 +960,12 @@
           Interested in my full professional background? You can view or download my complete curriculum vitae below.
         </p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="./cv_version_2.pdf" target="_blank" class="btn btn-primary"
-            style="display:inline-flex; align-items:center; gap:0.6rem;">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
+          <a href="./cv_version_2.pdf" target="_blank" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             View CV
           </a>
-          <a href="./cv_version_2.pdf" download class="btn btn-outline"
-            style="display:inline-flex; align-items:center; gap:0.6rem;">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
+          <a href="./cv_version_2.pdf" download class="btn btn-outline" style="display:inline-flex; align-items:center; gap:0.6rem;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
             Download
           </a>
         </div>
@@ -1351,18 +985,15 @@
           <p class="contact-sub">
             Open to interesting projects, collaborations, and opportunities. Drop a message — I respond promptly.
           </p>
-          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sijanpandey39@gmail.com" target="_blank"
-            class="btn btn-primary" style="display:inline-flex;">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sijanpandey39@gmail.com" target="_blank" class="btn btn-primary" style="display:inline-flex;">
             sijanpandey39@gmail.com
           </a>
         </div>
         <div class="fade-in stagger-2">
           <div class="section-label" style="margin-bottom:1.2rem;">Find me on</div>
           <div class="contact-links">
-            <a href="https://github.com/devsijanpandey12" target="_blank"
-              class="contact-link">github.com/devsijanpandey12</a>
-            <a href="https://www.linkedin.com/in/sijan-pandey-084a5b265/" target="_blank"
-              class="contact-link">linkedin.com/in/sijan-pandey-084a5b265</a>
+            <a href="https://github.com/devsijanpandey12" target="_blank" class="contact-link">github.com/devsijanpandey12</a>
+            <a href="https://www.linkedin.com/in/sijan-pandey-084a5b265/" target="_blank" class="contact-link">linkedin.com/in/sijan-pandey-084a5b265</a>
           </div>
         </div>
       </div>
@@ -1420,7 +1051,7 @@
       threshold: 0.08,
       rootMargin: '0px 0px -50px 0px'
     };
-
+    
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -1429,7 +1060,7 @@
         }
       });
     }, observerOptions);
-
+    
     document.querySelectorAll('.fade-in, .slide-in-left, .exp-item').forEach(el => observer.observe(el));
 
     // Smooth active nav highlight
@@ -1460,245 +1091,5 @@
       });
     });
   </script>
-
-  <!-- Three.js Flowing Terrain -->
-  <script>
-  (function() {
-    const canvas = document.getElementById('three-canvas');
-    if (!canvas) return;
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0);
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 200);
-    camera.position.set(0, 12, 30);
-    camera.lookAt(0, 0, 0);
-
-    // Mouse
-    const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
-    document.addEventListener('mousemove', (e) => {
-      mouse.targetX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouse.targetY = -(e.clientY / window.innerHeight) * 2 + 1;
-    });
-
-    // --- TERRAIN PLANE ---
-    const SEGMENTS = 128;
-    const SIZE = 80;
-    const geometry = new THREE.PlaneGeometry(SIZE, SIZE, SEGMENTS, SEGMENTS);
-    geometry.rotateX(-Math.PI * 0.55);
-
-    // Vertex colors
-    const count = geometry.attributes.position.count;
-    const colors = new Float32Array(count * 3);
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    const material = new THREE.MeshBasicMaterial({
-      wireframe: true,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.6,
-      depthWrite: false
-    });
-
-    const terrain = new THREE.Mesh(geometry, material);
-    terrain.position.y = -6;
-    scene.add(terrain);
-
-    // --- FLOATING ORBS ---
-    const orbGroup = new THREE.Group();
-    scene.add(orbGroup);
-
-    const orbData = [];
-    for (let i = 0; i < 24; i++) {
-      const size = Math.random() * 0.3 + 0.08;
-      const orbGeo = new THREE.SphereGeometry(size, 12, 12);
-      const brightness = Math.random() * 0.3 + 0.15;
-      const orbMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(brightness, brightness * 0.95, brightness * 0.85),
-        transparent: true,
-        opacity: 0.35,
-        depthWrite: false
-      });
-      const orb = new THREE.Mesh(orbGeo, orbMat);
-
-      const ox = (Math.random() - 0.5) * 50;
-      const oy = Math.random() * 10 + 2;
-      const oz = (Math.random() - 0.5) * 30;
-      orb.position.set(ox, oy, oz);
-      orbGroup.add(orb);
-      orbData.push({
-        mesh: orb,
-        baseY: oy,
-        speed: Math.random() * 0.4 + 0.2,
-        amplitude: Math.random() * 1.5 + 0.5,
-        phase: Math.random() * Math.PI * 2,
-        driftX: (Math.random() - 0.5) * 0.005,
-        driftZ: (Math.random() - 0.5) * 0.005
-      });
-    }
-
-    // --- SIMPLEX-LIKE NOISE (hash-based) ---
-    function noise2D(x, y) {
-      const n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
-      return (n - Math.floor(n)) * 2 - 1;
-    }
-
-    function smoothNoise(x, y) {
-      const ix = Math.floor(x);
-      const iy = Math.floor(y);
-      const fx = x - ix;
-      const fy = y - iy;
-      const sx = fx * fx * (3 - 2 * fx);
-      const sy = fy * fy * (3 - 2 * fy);
-
-      const n00 = noise2D(ix, iy);
-      const n10 = noise2D(ix + 1, iy);
-      const n01 = noise2D(ix, iy + 1);
-      const n11 = noise2D(ix + 1, iy + 1);
-
-      const nx0 = n00 + (n10 - n00) * sx;
-      const nx1 = n01 + (n11 - n01) * sx;
-      return nx0 + (nx1 - nx0) * sy;
-    }
-
-    function fbm(x, y) {
-      let value = 0;
-      let amp = 0.5;
-      let freq = 1;
-      for (let i = 0; i < 5; i++) {
-        value += smoothNoise(x * freq, y * freq) * amp;
-        amp *= 0.5;
-        freq *= 2.1;
-      }
-      return value;
-    }
-
-    // --- RIPPLE SYSTEM ---
-    const ripples = [];
-    let lastRippleTime = 0;
-
-    document.addEventListener('mousemove', () => {
-      const now = Date.now();
-      if (now - lastRippleTime > 200) {
-        ripples.push({
-          x: mouse.targetX * SIZE * 0.4,
-          z: -mouse.targetY * SIZE * 0.3,
-          time: 0,
-          strength: 1.2
-        });
-        if (ripples.length > 8) ripples.shift();
-        lastRippleTime = now;
-      }
-    });
-
-    // --- ANIMATION ---
-    let time = 0;
-    const posAttr = geometry.attributes.position;
-    const colAttr = geometry.attributes.color;
-    const originalY = new Float32Array(count);
-
-    // Store original Y positions
-    for (let i = 0; i < count; i++) {
-      originalY[i] = posAttr.getY(i);
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-      time += 0.008;
-
-      // Smooth mouse
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
-
-      // Update terrain vertices
-      for (let i = 0; i < count; i++) {
-        const x = posAttr.getX(i);
-        const z = posAttr.getZ(i);
-
-        // Multi-layered wave
-        let height = fbm(x * 0.04 + time * 0.3, z * 0.04 + time * 0.2) * 3;
-        height += Math.sin(x * 0.08 + time * 2) * 0.6;
-        height += Math.cos(z * 0.06 + time * 1.5) * 0.4;
-
-        // Mouse influence — creates a hill under cursor
-        const mx = mouse.x * SIZE * 0.4;
-        const mz = -mouse.y * SIZE * 0.3;
-        const dist = Math.sqrt((x - mx) * (x - mx) + (z - mz) * (z - mz));
-        if (dist < 15) {
-          const influence = Math.pow(1 - dist / 15, 2);
-          height += influence * 3.5 * Math.sin(time * 3 + dist * 0.4);
-        }
-
-        // Active ripples
-        for (let r = 0; r < ripples.length; r++) {
-          const rip = ripples[r];
-          const rd = Math.sqrt((x - rip.x) * (x - rip.x) + (z - rip.z) * (z - rip.z));
-          const rippleRadius = rip.time * 20;
-          const ringDist = Math.abs(rd - rippleRadius);
-          if (ringDist < 5) {
-            const fade = Math.max(0, 1 - rip.time * 0.7) * rip.strength;
-            const ring = Math.cos(ringDist * 0.6) * fade;
-            height += ring * 1.5;
-          }
-        }
-
-        posAttr.setY(i, originalY[i] + height);
-
-        // Color: warm gradient based on height
-        const normalHeight = (height + 3) / 6;
-        const r2 = 0.12 + normalHeight * 0.15;
-        const g = 0.11 + normalHeight * 0.12;
-        const b = 0.08 + normalHeight * 0.08;
-        colAttr.setXYZ(i, r2, g, b);
-      }
-
-      posAttr.needsUpdate = true;
-      colAttr.needsUpdate = true;
-
-      // Update ripples
-      for (let r = ripples.length - 1; r >= 0; r--) {
-        ripples[r].time += 0.016;
-        if (ripples[r].time > 2) ripples.splice(r, 1);
-      }
-
-      // Animate orbs
-      for (const o of orbData) {
-        o.mesh.position.y = o.baseY + Math.sin(time * o.speed + o.phase) * o.amplitude;
-        o.mesh.position.x += o.driftX;
-        o.mesh.position.z += o.driftZ;
-
-        // Wrap around
-        if (o.mesh.position.x > 28) o.mesh.position.x = -28;
-        if (o.mesh.position.x < -28) o.mesh.position.x = 28;
-        if (o.mesh.position.z > 18) o.mesh.position.z = -18;
-        if (o.mesh.position.z < -18) o.mesh.position.z = 18;
-
-        // Gentle pulse
-        const s = 1 + Math.sin(time * o.speed * 2 + o.phase) * 0.2;
-        o.mesh.scale.set(s, s, s);
-        o.mesh.material.opacity = 0.2 + Math.sin(time * o.speed + o.phase) * 0.12;
-      }
-
-      // Camera sway
-      camera.position.x += (mouse.x * 4 - camera.position.x) * 0.015;
-      camera.position.y += (12 + mouse.y * 2 - camera.position.y) * 0.015;
-      camera.lookAt(0, -2, -5);
-
-      renderer.render(scene, camera);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  })();
-  </script>
 </body>
-
 </html>
